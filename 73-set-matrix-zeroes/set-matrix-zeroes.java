@@ -3,27 +3,27 @@ class Solution {
         Set<Integer> rows = new HashSet<>();
         Set<Integer> cols = new HashSet<>();
 
-        int colLen = matrix.length;
-        int rowLen = colLen!=0 ? matrix[0].length : 0;
+        int rowLen = matrix.length;
+        int colLen = rowLen!=0 ? matrix[0].length : 0;
 
-        for(int colNo=0 ; colNo<colLen ; colNo++) {
-            for(int rowNo=0 ; rowNo<rowLen ; rowNo++) {
-                if(matrix[colNo][rowNo] == 0) {
-                    rows.add(rowNo);
-                    cols.add(colNo);
+        for(int row=0 ; row<rowLen ; row++) {
+            for(int col=0 ; col<colLen ; col++) {
+                if(matrix[row][col] == 0) {
+                    rows.add(row);
+                    cols.add(col);
                 }
             }
         }
 
-        for(int col : cols) {
-            for(int rowNo=0 ; rowNo<rowLen ; rowNo++) {
-                matrix[col][rowNo] = 0;
+        for(int row : rows) {
+            for(int col=0 ; col<colLen ; col++) {
+                matrix[row][col] = 0;
             }
         }
 
-        for(int row : rows) {
-            for(int colNo=0 ; colNo<colLen ; colNo++) {
-                matrix[colNo][row] = 0;
+        for(int col : cols) {
+            for(int row=0 ; row<rowLen ; row++) {
+                matrix[row][col] = 0;
             }
         }
     }
