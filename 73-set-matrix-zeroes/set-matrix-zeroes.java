@@ -3,19 +3,19 @@ class Solution {
         int m=matrix.length;
         int n=matrix[0].length;
 
-        boolean rowZero=false;
-        boolean colZero=false;
+        boolean firstRowZero=false;
+        boolean firstColZero=false;
 
         for(int row=0;row<m;row++) {
             if(matrix[row][0]==0) {
-                rowZero=true;
+                firstColZero=true;
                 break;
             }
         }
 
         for(int col=0;col<n;col++) {
             if(matrix[0][col]==0) {
-                colZero=true;
+                firstRowZero=true;
                 break;
             }
         }
@@ -45,13 +45,13 @@ class Solution {
             }
         }
 
-        if(rowZero) {
+        if(firstColZero) {
             for(int row=0;row<m;row++) {
                 matrix[row][0]=0;
             }
         }
 
-        if(colZero) {
+        if(firstRowZero) {
             for(int col=0;col<n;col++) {
                 matrix[0][col]=0;
             }
