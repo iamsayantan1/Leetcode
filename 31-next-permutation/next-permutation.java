@@ -1,44 +1,44 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        int dip = -1;
-        int len = nums.length;
+        int arrLen = nums.length;
+        int pivot=-1;
 
-        for(int i=len-2 ; i>=0 ; i--) {
-            if(nums[i] < nums[i+1]) {
-                dip = i;
+        for(int index=arrLen-2 ; index>=0 ; index--) {
+            if(nums[index] < nums[index+1]) {
+                pivot=index;
                 break;
             }
         }
 
-        if(dip == -1) {
-            reverse(nums, 0);
-        }
-        else {
-            for(int i=len-1 ; i>dip ; i--) {
-                if(nums[i] > nums[dip]) {
-                    swap(nums, dip, i);
+        if(pivot >= 0) {
+            for(int index=arrLen-1 ; index>pivot ; index--) {
+                if(nums[index] > nums[pivot]) {
+                    swap(nums, index, pivot);
                     break;
                 }
             }
 
-            reverse(nums, dip+1);
+            rotateArr(nums, pivot+1);
+        }
+        else {
+            rotateArr(nums, 0);
         }
     }
 
-    private void reverse(int[] arr, int stidx) {
-        int s = stidx;
-        int e = arr.length-1;
+    private void rotateArr(int[] arr, int start) {
+        int i=start;
+        int j=arr.length-1;
 
-        while(e>s) {
-            swap(arr,s,e);
-            e--;
-            s++;
+        while(i<j) {
+            swap(arr,i,j);
+            i++;
+            j--;
         }
     }
 
-    private void swap(int[] arr, int fidx, int sidx) {
-        int temp = arr[fidx];
-        arr[fidx] = arr[sidx];
-        arr[sidx] = temp;
+    private void swap(int[] arr, int l1, int l2) {
+        int temp = arr[l1];
+        arr[l1] = arr[l2];
+        arr[l2] = temp;
     }
 }
