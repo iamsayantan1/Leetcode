@@ -8,7 +8,7 @@ class Solution {
         }
 
         for(int row=2;row<numRows;row++) {
-            for(int col=1;col<=row-1;col++) {
+            for(int col=1;col<row;col++) {
                 pascal[row][col] = pascal[row-1][col] + pascal[row-1][col-1];
             }
         }
