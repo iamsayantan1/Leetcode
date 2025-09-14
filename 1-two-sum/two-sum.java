@@ -1,36 +1,15 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int arrLen = nums.length;
-        int[] sortedArr = Arrays.copyOf(nums,arrLen);
-        Arrays.sort(sortedArr);
+        Map<Integer,Integer> memory = new HashMap<>();
 
-        int i=0;
-        int j=arrLen-1;
+        for(int index=0;index<nums.length;index++) {
+            if(memory.containsKey(target-nums[index])) {
+                return new int[]{index,memory.get(target-nums[index])};
+            }
 
-        while(i<j) {
-            if(sortedArr[i]+sortedArr[j] == target) {
-                break;
-            }
-            else if(sortedArr[i]+sortedArr[j] < target) {
-                i++;
-            }
-            else {
-                j--;
-            }
+            memory.put(nums[index], index);
         }
 
-        int fIdx=-1;
-        int sIdx=-1;
-
-        for(int index=0;index<arrLen;index++) {
-            if(fIdx == -1 && nums[index] == sortedArr[i]) {
-                fIdx = index;
-            }
-            else if(sIdx == -1 && nums[index] == sortedArr[j]) {
-                sIdx = index;
-            }
-        }
-
-        return new int[]{fIdx,sIdx};
+        return new int[]{-1,-1};
     }
 }
