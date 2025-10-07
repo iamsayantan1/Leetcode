@@ -1,12 +1,15 @@
 class Solution {
     public int arraySign(int[] nums) {
-        boolean isZero = Arrays.stream(nums).anyMatch(x -> x==0);
-        if (isZero) {
-            return 0;
+        int negCnt = 0;
+        for(int num:nums) {
+            if(num==0) {
+                return 0;
+            }
+            else if(num<0) {
+                negCnt++;
+            }
         }
         
-        long negative = Arrays.stream(nums).filter(x -> x<0).count();
-        
-        return  (negative%2 == 0) ? 1 : -1;
+        return  (negCnt%2 == 0) ? 1 : -1;
     }
 }
