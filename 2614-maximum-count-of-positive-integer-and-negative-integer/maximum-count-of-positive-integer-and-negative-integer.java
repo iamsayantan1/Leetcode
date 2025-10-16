@@ -1,47 +1,48 @@
 class Solution {
     public int maximumCount(int[] nums) {
-        int len = nums.length;
+        int pos = nums.length - upperBound(nums);
+        int neg = lowerBound(nums);
+
+        return Math.max(pos,neg);
+    }
+
+    private int lowerBound(int[] a) {
         int s=0;
-        int e=len-1;
-        boolean hasZero = false;
-        int mid=0;
+        int e=a.length-1;
+        int m=0;
+        int index=a.length;
 
         while(e>=s) {
-            mid = (s+e+1)/2;
-            if(nums[mid] == 0) {
-                hasZero=true;
-                break;
-            }
-            else if(nums[mid] < 0) {
-                s=mid+1;
+            m=(e+s)/2;
+            if(a[m]>=0) {
+                e=m-1;
+                index=m;
             }
             else {
-                e=mid-1;
+                s=m+1;
             }
         }
 
-        if(nums[0]>0 || nums[len-1]<0) {
-            return len;
-        }
+        return index;
+    }
 
-        if(hasZero) {
-            s=e=mid;
-            while(nums[s] == 0) {
-                if(--s<0) {
-                    break;
-                }
+    private int upperBound(int[] a) {
+        int s=0;
+        int e=a.length-1;
+        int m=0;
+        int index=a.length;
+
+        while(e>=s) {
+            m=(e+s)/2;
+            if(a[m]<=0) {
+                s=m+1;
             }
-
-            while(nums[e] == 0) {
-                if(++e==len) {
-                    break;
-                }
+            else {
+                e=m-1;;
+                index=m;
             }
+        }
 
-            return Integer.max(s+1,len-e);
-        }
-        else {
-            return Integer.max(s,len-1-e);
-        }
+        return index;
     }
 }
