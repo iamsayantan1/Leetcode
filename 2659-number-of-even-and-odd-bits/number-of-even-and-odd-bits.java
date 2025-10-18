@@ -1,24 +1,22 @@
 class Solution {
     public int[] evenOddBit(int n) {
-        int f = 0;
-        int s = 0;
-        int counter = 0;
-        
-        while(n!=0) {
-            counter++;
-            int bit = n%2;
-            if(bit == 1) {
-                if(counter%2 == 0) {
-                    s++;
+        char[] bitStr = Integer.toBinaryString(n).toCharArray();
+        int even=0;
+        int odd=0;
+        int count=0;
+
+        for(int idx=bitStr.length-1; idx>=0; idx--) {
+            if (bitStr[idx] == '1') {
+                if(count%2==0) {
+                    even++;
                 }
                 else {
-                    f++;
+                    odd++;
                 }
             }
-
-            n = n>>1;
+            count++;
         }
 
-        return new int[]{f,s};
+        return new int[]{even,odd};
     }
 }
