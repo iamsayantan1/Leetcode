@@ -3,13 +3,13 @@ class Solution {
         if(nums != null && nums.length>1) {
             Map<Integer,Integer> map = new HashMap<>();
             for(int index=0; index<nums.length; index++) {
-                map.put(nums[index],index);
-            }
+                int need = target-nums[index];
 
-            for(int index=0; index<nums.length; index++) {
-                if(map.containsKey(target-nums[index]) && map.get(target-nums[index]) != index) {
-                    return new int[]{index,map.get(target-nums[index])};
+                if(map.containsKey(need)) {
+                    return new int[]{index,map.get(need)};
                 }
+
+                map.put(nums[index],index);
             }
         }
         return new int[]{-1,-1};
