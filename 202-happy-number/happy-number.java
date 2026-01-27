@@ -2,23 +2,22 @@ class Solution {
     public boolean isHappy(int n) {
         int slow = n;
         int fast = n;
-        while(fast!=1) {
-            slow = sumOfSqrs(slow);
-            fast = sumOfSqrs(sumOfSqrs(fast));
 
-            if(slow == fast && fast != 1) {
-                return false;
-            }
+        do{
+            slow = next(slow);
+            fast = next(next(fast));
         }
+        while(slow != fast);
 
-        return true;
+        return slow == 1;
     }
 
-    int sumOfSqrs(int num) {
+    int next(int num) {
         int sum=0;
-        while(num != 0) {
-            sum+=((num%10)*(num%10));
-            num/=10;
+        while(num > 0) {
+            int d = num%10;
+            sum += d*d;
+            num /= 10;
         }
         return sum;
     }
