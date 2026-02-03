@@ -1,1 +1,1 @@
-<h2>find-pivot-index Notes</h2><hr>[ Time taken: 17 m 32 s ]
+<h2>find-pivot-index Notes</h2><hr>[ Time taken: 8 m 21 s ]
