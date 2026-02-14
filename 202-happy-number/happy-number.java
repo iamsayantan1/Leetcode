@@ -1,24 +1,31 @@
 class Solution {
     public boolean isHappy(int n) {
-        int slow = n;
-        int fast = n;
+        int fastResult = n;
+        int slowResult = n;
+        do {
+            if(fastResult == 1) {
+                return true;
+            }
 
-        do{
-            slow = next(slow);
-            fast = next(next(fast));
+            fastResult = sumOfSqrs(sumOfSqrs(fastResult));
+            slowResult = sumOfSqrs(slowResult);
         }
-        while(slow != fast);
+        while(fastResult != slowResult);
 
-        return slow == 1;
+        return fastResult==1;
     }
 
-    int next(int num) {
+
+
+    int sumOfSqrs(int n) {
         int sum=0;
-        while(num > 0) {
-            int d = num%10;
-            sum += d*d;
-            num /= 10;
+
+        while(n != 0) {
+            int rem = n%10;
+            sum += rem*rem;
+            n /= 10;
         }
+
         return sum;
     }
 }
