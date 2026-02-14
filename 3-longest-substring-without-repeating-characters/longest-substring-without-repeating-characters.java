@@ -4,16 +4,17 @@ class Solution {
         int maxss = 0;
         int left=0;
 
-        Map<Character,Integer> seen = new HashMap<>();
+        int[] seen = new int[128];
+        Arrays.fill(seen,-1);
         
         for(int right=0;right<len;right++) {
             char ch = s.charAt(right);
 
-            if(seen.containsKey(ch)) {
-                left = Math.max(left,seen.get(ch)+1);
+            if(seen[ch] > -1) {
+                left = Math.max(left,seen[ch]+1);
             }
 
-            seen.put(ch,right);
+            seen[ch] = right;
             maxss = Math.max(maxss,right-left+1);
         }
 
