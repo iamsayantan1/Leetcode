@@ -3,10 +3,6 @@ class Solution {
         int fastResult = n;
         int slowResult = n;
         do {
-            if(fastResult == 1) {
-                return true;
-            }
-
             fastResult = sumOfSqrs(sumOfSqrs(fastResult));
             slowResult = sumOfSqrs(slowResult);
         }
