@@ -7,12 +7,15 @@ class Solution {
         
         int index = len-1;
         while(left<=right) {
-            if(-1*nums[left]>nums[right]) {
-                out[index--] = nums[left]*nums[left];
+            int lftsqr = nums[left]*nums[left];
+            int rgtsqr = nums[right]*nums[right];
+
+            if(lftsqr>rgtsqr) {
+                out[index--] = lftsqr;
                 left++;
             }
             else {
-                out[index--] = nums[right]*nums[right];
+                out[index--] = rgtsqr;
                 right--;
             }
         }
