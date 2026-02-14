@@ -9,13 +9,12 @@ class Solution {
                 swap(nums, m, r);
                 r--;
             }
-
-            if (nums[m] == 0) {
+            else if (nums[m] == 0) {
                 swap(nums, m, l);
                 l++;
-            }
-
-            if (nums[m] != 2) {
+                m++;
+            } 
+            else {
                 m++;
             }
         }
