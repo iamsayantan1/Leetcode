@@ -1,1 +1,1 @@
-<h2>middle-of-the-linked-list Notes</h2><hr>[ Time taken: 4 m 31 s ]
+<h2>middle-of-the-linked-list Notes</h2><hr>[ Time taken: 3 m 17 s ]
